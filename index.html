@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/index.css" />
+		<script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script defer src="./js/index.js"></script>
+		<title>Lesson 13 (Practice)</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="container" id="app">
+				<header>
+					<ul class="buttn">
+						<li>clients</li>
+						<li>orders</li>
+						<li>messages</li>
+						<li>users</li>
+						<li>settings</li>
+					</ul>
+					<div class="user-info">
+						<img class="avatar" src="./avatar/user.jpg" />
+						<p class="user-name">Jhon Doe</p>
+						<img class="drop-btn" v-on:click="openDropController ()" src="./icon/down.svg" />
+						<ul class="drop-menu" v-bind:class="{'active': isActive}">
+							<li>setting</li>
+							<li>exit</li>
+						</ul>
+					</div>
+				</header>
+				<main>
+					<div class="user-panel">
+						<div class="user">
+							<h2 class="active-user">users</h2>
+							<p class="amount-users">38 users</p>
+						</div>
+						<div class="invite-user">
+							<img
+								src="./icon/plus_icon.svg"
+								class="icon-invite"
+							/>
+							<p class="text-invite">invite user</p>
+						</div>
+					</div>
+					<div class="search">
+						<div class="search-container">
+							<img
+								src="./icon/search_icon.svg"
+								class="search-icon"
+							/>
+							<input
+								type="text"
+								placeholder="Search for User,email,address..."
+								class="input-search"
+							/>
+							<img
+								src="./icon/filtering_icon.svg"
+								class="search-icon"
+							/>
+						</div>
+					</div>
+					<table class="user-table">
+						<thead>
+							<tr>
+								<td>
+									<img
+										src="./icon/button_minus_icon.svg"
+										class="icon-select-user"
+									/>
+								</td>
+								<td>
+									<span class="select-user">
+										2 user selected
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>Chek</td>
+								<td>Foto</td>
+								<td>Id</td>
+								<td>Name</td>
+								<td>Base Experiense</td>
+								<td>Ability</td>
+								<td>Type Name</td>
+								<td>Weight</td>
+								<td>Height</td>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- inner JS -->
+							<tr>
+								<td colspan="9" style="font-size: 22px">
+									Loading...
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="modal-container">
+						<div class="overlay">
+							<div class="modal">
+								<!-- inner JS -->
+								<div class="spiner">
+									<div class="element"></div>
+									<div class="element"></div>
+									<div class="element"></div>
+									<div class="element"></div>
+									<div class="element"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+				<footer class="footer">
+					<div class="footer-container">
+						<div class="active-rows">
+							<p class="rows-num">1-5 of 23</p>
+						</div>
+						<div class="page-navigation">
+							<p class="rows-page">Rows per page:</p>
+							<select class="select-row">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+							<img src="./icon/left_icon.svg" class="btn-nav" />
+							<img src="./icon/right_icon.svg" class="btn-nav" />
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>
