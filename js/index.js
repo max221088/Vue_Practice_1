@@ -37,6 +37,7 @@ const app = new Vue ({
 		});
 	}.bind(this));
 		}
-		
+		pokemon = JSON.parse(localStorage.getItem("pokemon"));
+		//console.log(pokemon);
 	}
 });
