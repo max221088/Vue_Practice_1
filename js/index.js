@@ -1,11 +1,12 @@
 
-let pokemon = [];
+
 
 
 const app = new Vue ({
 	el: '#app',
 	data: {
 		isActive: false,
+		pokemon: [],
 	},
 	methods: {
 		openDropController () {
@@ -31,13 +32,12 @@ const app = new Vue ({
 				if (pokList.length == pok.length) {
 					console.log(pokList);
 					localStorage.setItem("pokemon", JSON.stringify(pokList));
-				}
-				
+				}				
 			});
 		});
 	}.bind(this));
 		}
-		pokemon = JSON.parse(localStorage.getItem("pokemon"));
-		//console.log(pokemon);
+		this.pokemon = JSON.parse(localStorage.getItem("pokemon"));
+		//console.log(this.pokemon);
 	}
 });

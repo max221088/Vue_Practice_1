@@ -90,10 +90,16 @@
 						</thead>
 						<tbody>
 							<!-- inner JS -->
-							<tr>
-								<td colspan="9" style="font-size: 22px">
-									Loading...
-								</td>
+							<tr v-for="(item, index) in pokemon" :key="index">
+								<td><input type ="checkbox" class= "checkbox"></td>
+								<td><img :data-name="item.name" class="front-pokemon" :src="item.sprites.front_default"></td>
+								<td>{{item.id}}</td>
+								<td class="poke-name">{{item.name}}</td>
+								<td>{{item.base_experience}}</td>
+								<td>{{item.abilities[0].ability.name}}</td>
+								<td>{{item.types[0].type.name}}</td>
+								<td>{{item.weight}}</td>
+								<td>{{item.height}}</td>
 							</tr>
 						</tbody>
 					</table>
