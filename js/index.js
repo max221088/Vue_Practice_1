@@ -13,13 +13,30 @@ const app = new Vue ({
 		}
 	},
 	created: function () {
-		fetch("https://pokeapi.co/api/v2/pokemon/")
+		if (localStorage.getItem('pokemon') == null) {
+			fetch("https://pokeapi.co/api/v2/pokemon/")
 	.then(function (response) {
 		return response.json();
 	})
 	.then(function (data) {
-		this.pokemon = data.results;
-		console.log(this.pokemon);
+		let pok = data.results;
+		let pokList = [];
+		pok.forEach(function (el) {
+			fetch(el.url)
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data){
+				pokList.push(data);
+				if (pokList.length == pok.length) {
+					console.log(pokList);
+					localStorage.setItem("pokemon", JSON.stringify(pokList));
+				}
+				
+			});
+		});
 	}.bind(this));
+		}
+		
 	}
 });
