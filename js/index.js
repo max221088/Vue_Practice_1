@@ -7,10 +7,22 @@ const app = new Vue ({
 	data: {
 		isActive: false,
 		pokemon: [],
+		renderData: [],
+		filtQuery: null,
 	},
 	methods: {
 		openDropController () {
 			this.isActive = !this.isActive;
+		},
+		filterController () {
+			let query = this.filtQuery.toLowerCase();
+			this.renderData = this.pokemon.filter(function (el) {
+				if (el.name.toLowerCase().indexOf(query) != -1) {
+					return true;
+				} else {
+					return false;
+				}
+			});
 		}
 	},
 	created: function () {
@@ -30,7 +42,7 @@ const app = new Vue ({
 			.then(function (data){
 				pokList.push(data);
 				if (pokList.length == pok.length) {
-					console.log(pokList);
+					//console.log(pokList);
 					localStorage.setItem("pokemon", JSON.stringify(pokList));
 				}				
 			});
@@ -38,6 +50,6 @@ const app = new Vue ({
 	}.bind(this));
 		}
 		this.pokemon = JSON.parse(localStorage.getItem("pokemon"));
-		//console.log(this.pokemon);
+		this.renderData = this.pokemon;
 	}
 });

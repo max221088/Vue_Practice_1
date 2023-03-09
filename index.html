@@ -52,6 +52,8 @@
 							/>
 							<input
 								type="text"
+								v-model="filtQuery"
+								V-on:keyup="filterController()"
 								placeholder="Search for User,email,address..."
 								class="input-search"
 							/>
@@ -90,7 +92,7 @@
 						</thead>
 						<tbody>
 							<!-- inner JS -->
-							<tr v-for="(item, index) in pokemon" :key="index">
+							<tr v-for="(item, index) in renderData" :key="index">
 								<td><input type ="checkbox" class= "checkbox"></td>
 								<td><img :data-name="item.name" class="front-pokemon" :src="item.sprites.front_default"></td>
 								<td>{{item.id}}</td>
