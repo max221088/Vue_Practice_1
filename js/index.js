@@ -1,6 +1,6 @@
 
 
-
+let API = "https://pokeapi.co/api/v2/pokemon/";
 
 const app = new Vue ({
 	el: '#app',
@@ -32,12 +32,12 @@ const app = new Vue ({
 					return false;
 				}
 			});
-			//console.log(this.renderData);
+			this.pokemon = this.renderData;
 		}
 	},
 	created: function () {
 		if (localStorage.getItem('pokemon') == null) {
-			fetch("https://pokeapi.co/api/v2/pokemon/")
+			fetch(API)
 	.then(function (response) {
 		return response.json();
 	})
@@ -54,13 +54,12 @@ const app = new Vue ({
 				if (pokList.length == pok.length) {
 					//console.log(pokList);
 					localStorage.setItem("pokemon", JSON.stringify(pokList));
+					this.renderData = JSON.parse(localStorage.getItem("pokemon"));
 				}				
-			});
-		});
+			}.bind(this));
+		}.bind(this));
 	}.bind(this));
 		}
-		this.pokemon = JSON.parse(localStorage.getItem("pokemon"));
-		this.renderData = this.pokemon;
-
+		this.renderData = JSON.parse(localStorage.getItem("pokemon"));
 	}
 });
