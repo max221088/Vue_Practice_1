@@ -23,6 +23,16 @@ const app = new Vue ({
 					return false;
 				}
 			});
+		},
+		delElementController (event) {
+			this.renderData = this.renderData.filter(function (el) {
+				if (el.id != event.target.getAttribute("data-id")) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			//console.log(this.renderData);
 		}
 	},
 	created: function () {
@@ -51,5 +61,6 @@ const app = new Vue ({
 		}
 		this.pokemon = JSON.parse(localStorage.getItem("pokemon"));
 		this.renderData = this.pokemon;
+
 	}
 });
