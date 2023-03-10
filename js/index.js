@@ -61,5 +61,6 @@ const app = new Vue ({
 	}.bind(this));
 		}
 		this.renderData = JSON.parse(localStorage.getItem("pokemon"));
+		this.pokemon = this.renderData;
 	}
 });
