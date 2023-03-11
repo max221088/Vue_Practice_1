@@ -9,6 +9,7 @@ const app = new Vue ({
 		pokemon: [],
 		renderData: [],
 		filtQuery: null,
+		delPokemon: [],
 	},
 	methods: {
 		openDropController () {
@@ -25,13 +26,8 @@ const app = new Vue ({
 			});
 		},
 		delElementController (event) {
-			this.renderData = this.renderData.filter(function (el) {
-				if (el.id != event.target.getAttribute("data-id")) {
-					return true;
-				} else {
-					return false;
-				}
-			});
+			let delIndex = event.target.getAttribute("data-index");
+			this.delPokemon = this.renderData.splice(delIndex, 1);
 			this.pokemon = this.renderData;
 		}
 	},
