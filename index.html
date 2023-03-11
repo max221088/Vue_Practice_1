@@ -23,7 +23,7 @@
 					<div class="user-info">
 						<img class="avatar" src="./avatar/user.jpg" />
 						<p class="user-name">Jhon Doe</p>
-						<img class="drop-btn" v-on:click="openDropController ()" src="./icon/down.svg" />
+						<img class="drop-btn" @click="openDropController ()" src="./icon/down.svg" />
 						<ul class="drop-menu" v-bind:class="{'active': isActive}">
 							<li>setting</li>
 							<li>exit</li>
@@ -53,7 +53,7 @@
 							<input
 								type="text"
 								v-model="filtQuery"
-								V-on:keyup="filterController()"
+								@input="filterController()"
 								placeholder="Search for User,email,address..."
 								class="input-search"
 							/>
