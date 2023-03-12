@@ -26,10 +26,32 @@ const app = new Vue ({
 			});
 		},
 		delElementController (event) {
-			let delIndex = event.target.getAttribute("data-index");
-			this.delPokemon = this.renderData.splice(delIndex, 1);
+			let checkboxes = document.querySelectorAll('.checkbox');
+			console.log(checkboxes);
+			//console.log(checkboxes[0].dataset.index);
+			for (i = checkboxes.length - 1; i >= 0; i--) {
+    			//console.log(checkboxes[i]);
+				if (checkboxes[i].checked) {
+					let delIndex = checkboxes[i].dataset.index;
+					console.log(delIndex);
+					this.delPokemon = this.renderData.splice(delIndex, 1);
+				};
+
+			};
+			// checkboxes.forEach(function (el) {
+				// if (el.checked) {
+				// 	let delIndex = el.dataset.index;
+				// 	console.log(delIndex);
+				// 	this.delPokemon = this.renderData.splice(delIndex, 1);
+				// 	this.pokemon = this.renderData;
+				// }
+			// }.bind(this))
+
+			// let delIndex = event.target.getAttribute("data-index");
+			// this.delPokemon = this.renderData.splice(delIndex, 1);
 			this.pokemon = this.renderData;
 		}
+		
 	},
 	created: function () {
 		if (localStorage.getItem('pokemon') == null) {

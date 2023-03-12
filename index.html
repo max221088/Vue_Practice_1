@@ -79,7 +79,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td>Delete</td>
+								<td><button @click="delElementController">Delete</button></td>
 								<td>Foto</td>
 								<td>Id</td>
 								<td>Name</td>
@@ -93,8 +93,8 @@
 						<tbody>
 							<!-- inner JS -->
 							<tr v-for="(item, index) in renderData" :key="index">
-								<!-- <td><input type ="checkbox" class= "checkbox"></td> -->
-								<td><button :data-index="index" @click="delElementController">O</button></td>
+								<td><input type ="checkbox" :data-index="index" class= "checkbox"></td>
+								<!-- <td><button :data-index="index" @click="delElementController">O</button></td> -->
 								<td><img :data-name="item.name" class="front-pokemon" :src="item.sprites.front_default"></td>
 								<td>{{item.id}}</td>
 								<td class="poke-name">{{item.name}}</td>
