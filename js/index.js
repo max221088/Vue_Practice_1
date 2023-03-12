@@ -25,58 +25,44 @@ const app = new Vue ({
 				}
 			});
 		},
-		delElementController (event) {
+		delElementController () {
 			let checkboxes = document.querySelectorAll('.checkbox');
-			console.log(checkboxes);
-			//console.log(checkboxes[0].dataset.index);
 			for (i = checkboxes.length - 1; i >= 0; i--) {
-    			//console.log(checkboxes[i]);
 				if (checkboxes[i].checked) {
 					let delIndex = checkboxes[i].dataset.index;
-					console.log(delIndex);
 					this.delPokemon = this.renderData.splice(delIndex, 1);
+					console.log(this.delPokemon[0].name);
+					checkboxes[i].checked = false;
 				};
 
 			};
-			// checkboxes.forEach(function (el) {
-				// if (el.checked) {
-				// 	let delIndex = el.dataset.index;
-				// 	console.log(delIndex);
-				// 	this.delPokemon = this.renderData.splice(delIndex, 1);
-				// 	this.pokemon = this.renderData;
-				// }
-			// }.bind(this))
-
-			// let delIndex = event.target.getAttribute("data-index");
-			// this.delPokemon = this.renderData.splice(delIndex, 1);
-			this.pokemon = this.renderData;
+		this.pokemon = this.renderData;
 		}
 		
 	},
 	created: function () {
 		if (localStorage.getItem('pokemon') == null) {
 			fetch(API)
-	.then(function (response) {
-		return response.json();
-	})
-	.then(function (data) {
-		let pok = data.results;
-		let pokList = [];
-		pok.forEach(function (el) {
-			fetch(el.url)
 			.then(function (response) {
-				return response.json();
-			})
-			.then(function (data){
-				pokList.push(data);
-				if (pokList.length == pok.length) {
-					//console.log(pokList);
-					localStorage.setItem("pokemon", JSON.stringify(pokList));
-					this.renderData = JSON.parse(localStorage.getItem("pokemon"));
-				}				
+			return response.json();
+		})
+			.then(function (data) {
+				let pok = data.results;
+				let pokList = [];
+				pok.forEach(function (el) {
+					fetch(el.url)
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data){
+						pokList.push(data);
+						if (pokList.length == pok.length) {
+							localStorage.setItem("pokemon", JSON.stringify(pokList));
+							this.renderData = JSON.parse(localStorage.getItem("pokemon"));
+						}				
+					}.bind(this));
+				}.bind(this));
 			}.bind(this));
-		}.bind(this));
-	}.bind(this));
 		}
 		this.renderData = JSON.parse(localStorage.getItem("pokemon"));
 		this.pokemon = this.renderData;
