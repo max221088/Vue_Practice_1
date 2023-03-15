@@ -8,22 +8,15 @@ const app = new Vue ({
 		isActive: false,
 		pokemon: [],
 		renderData: [],
-		filtQuery: null,
+		//filtQuery: null,
 		delPokemon: [],
 	},
 	methods: {
 		openDropController () {
 			this.isActive = !this.isActive;
 		},
-		filterController () {
-			let query = this.filtQuery.toLowerCase();
-			this.renderData = this.pokemon.filter(function (el) {
-				if (el.name.toLowerCase().indexOf(query) != -1) {
-					return true;
-				} else {
-					return false;
-				}
-			});
+		searchData: function (data) {
+			this.renderData = data;
 		},
 		delElementController () {
 			let checkboxes = document.querySelectorAll('.checkbox');
@@ -34,7 +27,6 @@ const app = new Vue ({
 					console.log(this.delPokemon[0].name);
 					checkboxes[i].checked = false;
 				};
-
 			};
 		this.pokemon = this.renderData;
 		}

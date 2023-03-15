@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./css/index.css" />
 		<script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script defer src="./js/components/search.js"></script>
 		<script defer src="./js/index.js"></script>
 		<title>Lesson 13 (Practice)</title>
 	</head>
@@ -50,13 +51,7 @@
 								src="./icon/search_icon.svg"
 								class="search-icon"
 							/>
-							<input
-								type="text"
-								v-model="filtQuery"
-								@input="filterController()"
-								placeholder="Search for User,email,address..."
-								class="input-search"
-							/>
+							<search :pokemon="pokemon" @search-data="searchData"></search>
 							<img
 								src="./icon/filtering_icon.svg"
 								class="search-icon"
