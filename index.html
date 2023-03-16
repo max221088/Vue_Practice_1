@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="./css/index.css" />
 		<script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 		<script defer src="./js/components/search.js"></script>
+		<script defer src="./js/components/message.js"></script>
 		<script defer src="./js/index.js"></script>
 		<title>Lesson 13 (Practice)</title>
 	</head>
@@ -101,6 +102,10 @@
 							</tr>
 						</tbody>
 					</table>
+					<message ref="message" :name="delName"></message>
+					<div class="message">
+						<p class="text-message">Pokemon delete</p>
+					</div>
 					<div class="modal-container">
 						<div class="overlay">
 							<div class="modal">

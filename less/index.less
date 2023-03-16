@@ -269,6 +269,32 @@ div {
                     }
                 }
             }
+            .message{
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                border-radius: 5px;
+                width: 300px;
+                height: auto;
+                padding: 10px;
+                background-color: #c8c6f0;
+                opacity: 0;
+                visibility: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .text-message{
+                    display: block;
+                    text-transform: capitalize;
+                    color: #424242;
+                    font-size: 16px;
+                }
+
+                &.active{
+                    opacity: 0.8;
+                    visibility: visible;
+                }
+            }
             .modal-container{
                 position: fixed;
                 top: 0;

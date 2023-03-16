@@ -8,7 +8,7 @@ const app = new Vue ({
 		isActive: false,
 		pokemon: [],
 		renderData: [],
-		//filtQuery: null,
+		delName: [],
 		delPokemon: [],
 	},
 	methods: {
@@ -24,11 +24,14 @@ const app = new Vue ({
 				if (checkboxes[i].checked) {
 					let delIndex = checkboxes[i].dataset.index;
 					this.delPokemon = this.renderData.splice(delIndex, 1);
-					console.log(this.delPokemon[0].name);
+					this.delName.push(this.delPokemon[0].name);
 					checkboxes[i].checked = false;
 				};
 			};
+		this.$refs.message.sendMessage();
+		//console.log(this.delName);
 		this.pokemon = this.renderData;
+		this.delName = [];
 		}
 		
 	},
