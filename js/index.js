@@ -29,7 +29,6 @@ const app = new Vue ({
 				};
 			};
 		this.$refs.message.sendMessage();
-		//console.log(this.delName);
 		this.pokemon = this.renderData;
 		this.delName = [];
 		}
